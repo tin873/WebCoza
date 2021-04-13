@@ -1,0 +1,29 @@
+﻿@model List<SizeViewData>
+@if (Model != null)
+{
+    <select id="selectSize" class="js-select3" name="size">
+        <option>chọn size</option>
+        @foreach (var item in Model)
+        {
+            <option>@item.Size</option>
+        }
+    </select>
+    <div class="dropDownSelect3"></div>
+
+    <script src="~/wwwroot/vendor/select2/select2.min.js"></script>
+    <script>
+        $(".js-select3").each(function () {
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect3')
+            });
+        })
+    </script>
+}
+else
+{
+    <select id="selectSize" class="js-select2" name="size" onchange="myfunc()">
+        <option>chọn size</option>
+    </select>
+    <div class="dropDownSelect2"></div>
+}
